@@ -23,7 +23,7 @@
         flex-direction: column;
         gap: 40px;
         padding-left: 160px;
-        padding-top: 245px; /* ?????? */
+        padding-top: 120px;
         justify-content: start;
     }
 
@@ -46,8 +46,9 @@
     }
 
     .main-img {
-        width: 897.37px;
-        height: 864px;
-        padding-right: 160px;
+        width: 897px;
+        height: 800px;
+        padding-right: 100px;
+        margin-bottom: -10px;
     }
 </style>
