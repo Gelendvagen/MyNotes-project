@@ -41,4 +41,23 @@
     img {
         padding-right: 12px;
     }
+
+    @media screen and (max-width: 1366px) and (min-width: 769px) {
+        .btn-login {
+            margin-right: 80px;
+        }
+    }
+
+    @media screen and (max-width: 768px) and (min-width: 361px) {
+        .btn-login {
+            margin-right: 40px;
+        }
+    }
+
+    @media screen and (max-width: 360px) {
+        .btn-login {
+            margin-right: 10px;
+            width: 144px;
+        }
+    }
 </style>
