@@ -1,6 +1,16 @@
 <script setup>
     import TheHeader from './TheHeader.vue'
-    
+</script>
+
+<script>
+    export default {
+        name: 'HeaderItem',
+        methods: {
+            showForm() {
+                this.$store.commit("visibleForm", true);
+            }
+        },
+    }
 </script>
 
 <template>
