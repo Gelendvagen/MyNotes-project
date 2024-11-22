@@ -14,7 +14,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #B1C909;
+        background-color: rgba(177, 201, 9, 1);
         border-radius: 32px;
         border-style: none;
         color: white;

@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
     <div class="main-page">
         <div class="main-text">

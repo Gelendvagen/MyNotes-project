@@ -1,13 +1,16 @@
 <script setup>
-  import TheHeader from './components/TheHeader.vue'
-  import TheMain from './components/TheMain.vue'
+  // import TheHeader from './components/TheHeader.vue'
+  // import TheMain from './components/TheMain.vue'
+
+  import ThePersonalAcc from './components/ThePersonalAcc.vue'
 </script>
 
 <template>
-  <TheHeader />
+  <!-- <TheHeader />
   <main>
     <TheMain />
-  </main>
+  </main> -->
+  <ThePersonalAcc />
 </template>
 
 <style scoped>
