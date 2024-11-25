@@ -3,14 +3,7 @@
 </script>
 
 <script>
-    export default {
-        name: 'HeaderItem',
-        methods: {
-            showForm() {
-                this.$store.commit("visibleForm", true);
-            }
-        },
-    }
+
 </script>
 
 <template>
