@@ -132,7 +132,7 @@ const authorizationUser = async () => {
         const user_info = await getUserInfo();
         storeAuth.logIn(user_info.email);
         storeModal.closeModal();
-        router.push('/add-notes');
+        router.push('/noteboard');
     } catch (error) {
         if (error instanceof Error) {
             error_message.value = error.message;
