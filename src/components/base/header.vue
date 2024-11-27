@@ -19,11 +19,11 @@
 </template>
 
 <script setup>
-import note_btn from '@/components/vue-mynotes/components-note-create/note-btn.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { defineProps, ref, onMounted, onBeforeUnmount } from 'vue';
-import { useStoreModal } from '@/stores/modal';
-import { useStoreAuth } from '@/stores/auth';
-import { useNotesStore } from '@/stores/notes';
+import { useStoreModal } from '@/components/stores/modal';
+import { useStoreAuth } from '@/components/stores/auth';
+import { useNotesStore } from '@/components/stores/notes';
 import { logoutUser } from '@/api';
 import { useRouter } from 'vue-router';
 

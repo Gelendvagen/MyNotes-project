@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
-import modalAuthCmp from '@/components/vue-mynotes/base/authorization.vue';
-import modalRegistrationCmp from '@/components/vue-mynotes/base/registration.vue';
-import modalNoteCmp from '@/components/vue-mynotes/base/modal-add-note.vue';
+import modalAuthCmp from '@/components/base/authorization.vue';
+import modalRegistrationCmp from '@/components/base/registration.vue';
+import modalNoteCmp from '@/components/base/modal-add-note.vue';
 
 const modalComponents = {
     modalAuthCmp,

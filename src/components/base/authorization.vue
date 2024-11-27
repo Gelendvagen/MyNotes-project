@@ -32,11 +32,11 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import note_name from '@/components/vue-mynotes/components-note-create/note-name.vue';
-import note_btn from '@/components/vue-mynotes/components-note-create/note-btn.vue';
-import { useStoreModal } from '@/stores/modal';
-import { authUser, getUserInfo } from '@/api';
-import { useStoreAuth } from '@/stores/auth';
+import note_name from '@/components/components-note-create/note-name.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
+import { useStoreModal } from '@/components/stores/modal.js';
+import { authUser, getUserInfo } from '@/api.js';
+import { useStoreAuth } from '@/components/stores/auth.js';
 
 const storeModal = useStoreModal();
 const storeAuth = useStoreAuth();

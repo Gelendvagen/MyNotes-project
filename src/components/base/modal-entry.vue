@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import note_btn from '@/components/vue-mynotes/components-note-create/note-btn.vue';
-import { useStoreModal } from '@/stores/modal';
+import note_btn from '@/components/components-note-create/note-btn.vue';
+import { useStoreModal } from '@/components/stores/modal';
 import { onUnmounted } from 'vue';
 
 const storeModal = useStoreModal();

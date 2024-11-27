@@ -19,7 +19,7 @@
 import { defineProps } from 'vue';
 import { deleteNote } from '@/api';
 import note_btn from './note-btn.vue';
-import { useNotesStore } from '@/stores/notes';
+import { useNotesStore } from '@/components/stores/notes';
 
 const props = defineProps({
     id: {
