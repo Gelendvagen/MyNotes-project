@@ -1,6 +1,6 @@
 import { useCookies } from 'vue3-cookies';
 import main from '@/components/main.vue';
-import addNotes from '@/components/add-notes.vue';
+import add_notes from '@/components/addnotes.vue';
 const { cookies } = useCookies();
 
 const checkAuth = (next, redirectTo, isAuthorized) => {
@@ -25,7 +25,7 @@ const routes = [
     {
         path: '/noteboard',
         name: 'noteboard',
-        component: addNotes,
+        component: add_notes,
         beforeEnter: (to, from, next) => {
             checkAuth(next, 'main', true);
         }
