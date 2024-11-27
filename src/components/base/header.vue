@@ -2,7 +2,7 @@
     <header class="header">
         <img v-if="window_width < 768 && !storeNotes.notes.length && storeAuth.isAuth" src="@/assets/logo.svg"/>
         <img v-else src="@/assets/logo.svg" :class="{ 'header-logo': window_width < 768 && storeNotes.notes.length || window_width < 768&& !storeAuth.isAuth }"/>
-        <noteBtn 
+        <note_btn 
             v-if="!is_loading && !storeAuth.$state.isAuth"
             :text="'Вход'"
             :btn_type="'_auth'"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import noteBtn from '@/components/components-note-create/note-btn.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { defineProps, ref, onMounted, onBeforeUnmount } from 'vue';
 import { useStoreModal } from '@/stores/modal';
 import { useStoreAuth } from '@/stores/auth';

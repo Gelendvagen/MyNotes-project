@@ -3,7 +3,7 @@
         <div @click="closeModal()" class="modal-shadow"></div>
         <div class="modal-container">
             <h2 class="modal-container-title">{{ storeModal.modalTitle }}</h2>
-            <noteBtn 
+            <note_btn
                 class="modal-container-close-btn"
                 :btn_type="'_cross'"
                 @click="closeModal()"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import noteBtn from '@/components/components-note-create/note-btn.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { useStoreModal } from '@/stores/modal';
 import { onUnmounted } from 'vue';
 

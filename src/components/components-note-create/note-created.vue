@@ -5,7 +5,7 @@
         </div>
         <div class="note-content">
             <div class="note-content-text">{{ text }}</div>
-            <noteBtn 
+            <note_btn 
                 class="note-content-btn"
                 :text="'Удалить'"
                 :btn_type="'_delete'"
@@ -18,7 +18,7 @@
 <script setup>
 import { defineProps } from 'vue';
 import { deleteNote } from '@/api';
-import noteBtn from './note-btn.vue';
+import note_btn from './note-btn.vue';
 import { useNotesStore } from '@/stores/notes';
 
 const props = defineProps({

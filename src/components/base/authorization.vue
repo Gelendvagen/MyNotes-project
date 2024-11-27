@@ -1,7 +1,7 @@
 <template>
     <form class="modal-auth" @submit.prevent="authorizationUser" novalidate>
         <div class="modal-auth-form" v-for="(input, input_id) in auth_form" :key="input_id">
-            <inputCmp 
+            <note_name 
                 :input_id="input.id"
                 :input_value="input.value"
                 :input_required="input.required"
@@ -19,7 +19,7 @@
         </div>
         <div class="modal-auth-info">
             <span class="modal-auth-info-text">У вас нет аккаунта? <span class="modal-auth-info-text-link" @click="openRegistrationModal">Зарегистрируйтесь</span></span>
-            <noteBtn 
+            <note_btn 
                 class="modal-auth-info-btn"
                 :text="'Войти'"
                 type="submit"
@@ -32,8 +32,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import inputCmp from '@/components/components-note-create/note-name.vue';
-import noteBtn from '@/components/components-note-create/note-btn.vue';
+import note_name from '@/components/components-note-create/note-name.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { useStoreModal } from '@/stores/modal';
 import { authUser, getUserInfo } from '@/api';
 import { useStoreAuth } from '@/stores/auth';

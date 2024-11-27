@@ -1,7 +1,7 @@
 <template>
     <form class="modal-registration" @submit.prevent="registrationUser" novalidate>
         <div class="modal-registration-form" v-for="(input, input_id) in reg_form" :key="input_id">
-            <inputCmp 
+            <note_name 
                 :input_id="input.id"
                 :input_value="input.value"
                 :input_required="input.required"
@@ -19,7 +19,7 @@
         </div>
         <div class="modal-registration-info">
             <span class="modal-registration-info-text">У вас есть аккаунт? <a class="modal-registration-info-text-link" @click="openAuthModal">Войдите</a></span>
-            <noteBtn 
+            <note_btn 
                 class="modal-registration-info-btn"
                 :text="'Зарегистрироваться'"
                 type="submit"
@@ -31,8 +31,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import inputCmp from '@/components/components-note-create/note-name.vue';
-import noteBtn from '@/components/components-note-create/note-btn.vue';
+import note_name from '@/components/components-note-create/note-name.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { useStoreModal } from '@/stores/modal';
 import { registerUser } from '@/api';
 

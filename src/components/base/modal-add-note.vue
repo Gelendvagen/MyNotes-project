@@ -1,6 +1,6 @@
 <template>
     <form class="modal-note" @submit.prevent="handleSubmit" novalidate>
-        <inputCmp 
+        <note_name 
             :input_id="input.id"
             :input_value="input.value"
             :input_required="input.required"
@@ -11,14 +11,14 @@
             :maxlength="input.maxlength"
             @set_input="setInput"
         />
-        <textareaCmp 
+        <note_text 
             :placeholder="textarea.placeholder"
             :textarea_title="textarea.textarea_title"
             :textarea_error="textarea.textarea_error"
             @set_textarea="setTextarea"
         />
         <div class="modal-note-info">
-            <noteBtn 
+            <note_btn 
                 class="modal-note-info-btn"
                 :text="'Добавить'"
                 type="submit"
@@ -30,9 +30,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import inputCmp from '@/components/components-note-create/note-name.vue';
-import textareaCmp from '@/components/components-note-create/note-text.vue';
-import noteBtn from '@/components/components-note-create/note-btn.vue';
+import note_name from '@/components/components-note-create/note-name.vue';
+import note_text from '@/components/components-note-create/note-text.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { useStoreModal } from '@/stores/modal';
 import { useNotesStore } from '@/stores/notes';
 import { createNote } from '@/api';

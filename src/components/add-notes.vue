@@ -1,7 +1,7 @@
 <template>
     <section class="notes-main">
         <div class="notes-board">
-            <noteCreat 
+            <note_create 
                 v-for="(note, index) in notes" 
                 :key="index" 
                 :title="note.title" 
@@ -9,7 +9,7 @@
                 :id="note.id"
             />
         </div>
-        <noteBtn 
+        <note_btn 
             class="notes-btn"
             :btn_type="'_plus'"
             @click="openAddNoteModal"
@@ -21,8 +21,8 @@
 import { onMounted, computed } from 'vue';
 import { useStoreModal } from '@/stores/modal';
 import { useNotesStore } from '@/stores/notes';
-import noteCreat from '@/components/components-note-create/note-created.vue';
-import noteBtn from '@/components/components-note-create/note-btn.vue';
+import note_create from '@/components/components-note-create/note-created.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
 import { getNotes } from '@/api';
 
 const storeModal = useStoreModal();
