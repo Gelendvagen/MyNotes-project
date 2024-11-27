@@ -1,6 +1,6 @@
 <template>
-    <form class="modal-auth" @submit.prevent="authorizationUser" novalidate>
-        <div class="modal-auth-form" v-for="(input, input_id) in auth_form" :key="input_id">
+    <form class="modal-registration" @submit.prevent="registrationUser" novalidate>
+        <div class="modal-registration-form" v-for="(input, input_id) in reg_form" :key="input_id">
             <note_name 
                 :input_id="input.id"
                 :input_value="input.value"
@@ -12,37 +12,33 @@
                 @set_input="setUserData"
                 @blur="validCheck(input)"
             />
-            <div class="modal-auth-form-eye"  @click="togglePassVisibility(input)">
+            <div class="modal-registration-form-eye"  @click="togglePassVisibility(input)">
                 <img v-if="input.type === 'password'" src="@/assets/show-password.svg">
                 <img v-if="input.type === 'text'" src="@/assets/hide-password.svg">
             </div>
         </div>
-        <div class="modal-auth-info">
-            <span class="modal-auth-info-text">У вас нет аккаунта? <span class="modal-auth-info-text-link" @click="openRegistrationModal">Зарегистрируйтесь</span></span>
+        <div class="modal-registration-info">
+            <span class="modal-registration-info-text">У вас есть аккаунт? <a class="modal-registration-info-text-link" @click="openAuthModal">Войдите</a></span>
             <note_btn 
-                class="modal-auth-info-btn"
-                :text="'Войти'"
+                class="modal-registration-info-btn"
+                :text="'Зарегистрироваться'"
                 type="submit"
             />
-            <span v-if="error_message.length" class="modal-auth-info-error">{{ error_message }}</span>
+            <span v-if="error_message.length" class="modal-registration-info-error">{{ error_message }}</span>
         </div>
     </form>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import note_name from '@/vue-mynotes/components-note-create/note-name.vue';
-import note_btn from '@/vue-mynotes/components-note-create/note-btn.vue';
-import { useStoreModal } from '@/vue-mynotes/stores/modal.js';
-import { authUser, getUserInfo } from '@/vue-mynotes/api.js';
-import { useStoreAuth } from '@/vue-mynotes/stores/auth.js';
+import note_name from '@/components/components-note-create/note-name.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
+import { useStoreModal } from '@/components/stores/modal';
+import { registerUser } from '@/api';
 
 const storeModal = useStoreModal();
-const storeAuth = useStoreAuth();
-const router = useRouter();
 
-const auth_form = ref([
+const reg_form = ref([
     {
         id: 'email',
         type: 'email',
@@ -60,19 +56,28 @@ const auth_form = ref([
         value: '',
         required: true,
         placeholder: 'Введите пароль',
-        pattern: '',
+        pattern: /^[A-Za-z0-9!@#$%^&*()_+{}:"<>?|[\]\/.,\-`~]*$/,
         valid: false,
         input_title: 'Пароль',
         error: ''
     },
+    {
+        id: 'confirm_password',
+        type: 'password',
+        value: '',
+        required: true,
+        placeholder: 'Введите пароль',
+        pattern: /^[A-Za-z0-9!@#$%^&*()_+{}:"<>?|[\]\/.,\-`~]*$/,
+        valid: false,
+        input_title: 'Пароль ещё раз',
+        error: ''
+    },
 ]);
 
-const error_message = ref('');
-
 const setUserData = (value) => {
-    for (let i = 0; i < auth_form.value.length; i++) {
-        if (auth_form.value[i].id === value.id) {
-            auth_form.value[i].value = value.value;
+    for (let i = 0; i < reg_form.value.length; i++) {
+        if (reg_form.value[i].id === value.id) {
+            reg_form.value[i].value = value.value;
         }
     }
 };
@@ -87,7 +92,7 @@ const validCheck = (input) => {
         } else if (!regExp.test(input.value)) {
             input.error = 'Поле может содержать только латиницу, цифры и пробел';
             return false;
-        } else if (input.id === 'password' && (input.value.length < 4 || input.value.length > 12)) {
+        } else if ((input.id === 'password' || input.id === 'confirm_password') && (input.value.length < 4 || input.value.length > 12)) {
             input.error = 'Длина пароля от 4 до 12 символов';
             return false;
         } else if (input.value.length > 255) {
@@ -104,14 +109,17 @@ const validCheck = (input) => {
     return true;
 };
 
-const authorizationUser = async () => {
+const error_message = ref('');
+
+const registrationUser = async () => {
     let user_valid = true;
     const user_data = {
         email: '',
-        password: ''
+        password: '',
+        confirm_password: ''
     };
 
-    for (let input of auth_form.value) {
+    for (let input of reg_form.value) {
         validCheck(input);
         if (input.error) {
             user_valid = false;
@@ -123,16 +131,13 @@ const authorizationUser = async () => {
         return;
     }
 
-    for (let item of auth_form.value) {
+    for (let item of reg_form.value) {
         user_data[item.id] = item.value;
     }
 
     try {
-        await authUser(user_data);
-        const user_info = await getUserInfo();
-        storeAuth.logIn(user_info.email);
+        await registerUser(user_data);
         storeModal.closeModal();
-        router.push('/noteboard');
     } catch (error) {
         if (error instanceof Error) {
             error_message.value = error.message;
@@ -140,10 +145,10 @@ const authorizationUser = async () => {
     }
 };
 
-const openRegistrationModal = () => {
+const openAuthModal = () => {
     storeModal.openModal({
-        activeModal: 'modalRegistrationCmp',
-        modalTitle: 'Регистрация',
+        activeModal: 'modalAuthCmp',
+        modalTitle: 'Вход в ваш аккаунт',
     });
 };
 
@@ -153,23 +158,23 @@ const togglePassVisibility = (input) => {
 </script>
 
 <style scoped>
-.modal-auth {
+.modal-registration {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
 @media (max-width: 767px) {
-    .modal-auth {
+    .modal-registration {
         gap: 16px;
     }
 }
 
-.modal-auth-form {
+.modal-registration-form {
     position: relative;
 }
 
-.modal-auth-form-eye {
+.modal-registration-form-eye {
     position: absolute;
     top: 58px;
     right: 22px;
@@ -181,7 +186,7 @@ const togglePassVisibility = (input) => {
     cursor: pointer;
 }
 
-.modal-auth-info {
+.modal-registration-info {
     margin-top: 16px;
     display: grid;
     grid-template-columns: 1fr auto;
@@ -191,7 +196,7 @@ const togglePassVisibility = (input) => {
 }
 
 @media (max-width: 767px) {
-    .modal-auth-info {
+    .modal-registration-info {
         margin-top: 12px;
         display: flex;
         flex-direction: column;
@@ -199,7 +204,7 @@ const togglePassVisibility = (input) => {
     }
 }
 
-.modal-auth-info-text {
+.modal-registration-info-text {
     grid-column: 1 / 2;
     grid-row: 1;
     font-size: 18px;
@@ -209,43 +214,43 @@ const togglePassVisibility = (input) => {
 }
 
 @media (max-width: 767px) {
-    .modal-auth-info-text {
+    .modal-registration-info-text {
         font-size: 14px;
     }
 }
 
-.modal-auth-info-text-link {
+.modal-registration-info-text-link {
     font-size: 18px;
     font-weight: 700;
     line-height: 28px;
     color: #B1C909;
     cursor: pointer;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
-.modal-auth-info-text-link:hover {
+.modal-registration-info-text-link:hover {
     color: #FFFFFF;
 }
 
 @media (max-width: 767px) {
-    .modal-auth-info-text-link {
+    .modal-registration-info-text-link {
         font-size: 14px;
     }
 }
 
-.modal-auth-info-btn {
+.modal-registration-info-btn {
     grid-column: 2 / 3;
     grid-row: 1;
 }
 
 @media (max-width: 767px) {
-    .modal-auth-info-btn {
+    .modal-registration-info-btn {
         order: -1;
         width: 100%;
     }
 }
 
-.modal-auth-info-error {
+.modal-registration-info-error {
     grid-column: 1 / -1;
     grid-row: 2;
     font-size: 18px;
@@ -259,7 +264,7 @@ const togglePassVisibility = (input) => {
 }
 
 @media (max-width: 767px) {
-    .modal-auth-info-error {
+    .modal-registration-info-error {
         font-size: 14px;
         padding: 6px 20px;
     }

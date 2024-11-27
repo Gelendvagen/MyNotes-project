@@ -30,12 +30,12 @@
 
 <script setup>
 import { ref } from 'vue';
-import note_name from '@/vue-mynotes/components-note-create/note-name.vue';
-import note_text from '@/vue-mynotes/components-note-create/note-text.vue';
-import note_btn from '@/vue-mynotes/components-note-create/note-btn.vue';
-import { useStoreModal } from '@/vue-mynotes/stores/modal';
-import { useNotesStore } from '@/vue-mynotes/stores/notes';
-import { createNote } from '@/vue-mynotes/api';
+import note_name from '@/components/components-note-create/note-name.vue';
+import note_text from '@/components/components-note-create/note-text.vue';
+import note_btn from '@/components/components-note-create/note-btn.vue';
+import { useStoreModal } from '@/components/stores/modal';
+import { useNotesStore } from '@/components/stores/notes';
+import { createNote } from '@/api';
 
 const storeModal = useStoreModal();
 const storeNotes = useNotesStore();
