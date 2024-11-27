@@ -1,6 +1,6 @@
 import { useCookies } from 'vue3-cookies';
-import main from './components/main.vue';
-import add_notes from './components/addnotes.vue';
+import main from 'main.vue';
+import add_notes from 'addnotes.vue';
 const { cookies } = useCookies();
 
 const checkAuth = (next, redirectTo, isAuthorized) => {

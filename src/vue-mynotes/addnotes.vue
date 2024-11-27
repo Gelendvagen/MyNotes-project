@@ -19,11 +19,11 @@
 
 <script setup>
 import { onMounted, computed } from 'vue';
-import { useStoreModal } from '@/components/stores/modal.js';
-import { useNotesStore } from '@/components/stores/notes.js';
-import note_create from '@/components/components-note-create/note-created.vue';
-import note_btn from '@/components/components-note-create/note-btn.vue';
-import { getNotes } from '@/api';
+import { useStoreModal } from '@/vue-mynotes/stores/modal.js';
+import { useNotesStore } from '@/vue-mynotes/stores/notes.js';
+import note_create from '@/vue-mynotes/components-note-create/note-created.vue';
+import note_btn from '@/vue-mynotes/components-note-create/note-btn.vue';
+import { getNotes } from '@/vue-mynotes/api';
 
 const storeModal = useStoreModal();
 const storeNotes = useNotesStore();

@@ -17,9 +17,9 @@
 
 <script setup>
 import { defineProps } from 'vue';
-import { deleteNote } from '@/api';
+import { deleteNote } from '@/vue-mynotes/api';
 import note_btn from './note-btn.vue';
-import { useNotesStore } from '@/components/stores/notes';
+import { useNotesStore } from '@/vue-mynotes/stores/notes';
 
 const props = defineProps({
     id: {
