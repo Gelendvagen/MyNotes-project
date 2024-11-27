@@ -31,8 +31,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import note_name from '@/components/components-note-create/note-name.vue';
-import note_btn from '@/components/components-note-create/note-btn.vue';
+import note_name from '@/components/vue-mynotes/components-note-create/note-name.vue';
+import note_btn from '@/components/vue-mynotes/components-note-create/note-btn.vue';
 import { useStoreModal } from '@/stores/modal';
 import { registerUser } from '@/api';
 

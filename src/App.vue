@@ -1,6 +1,6 @@
 <script setup>
-import Header from '@/components/base/header.vue';
-import modalCmp from '@/components/base/modal-entry.vue';
+import Header from '@/components/vue-mynotes/base/header.vue';
+import modalCmp from '@/components/vue-mynotes/base/modal-entry.vue';
 import { useStoreModal } from '@/stores/modal';
 import { useStoreAuth } from '@/stores/auth';
 import { onMounted, ref } from 'vue';
