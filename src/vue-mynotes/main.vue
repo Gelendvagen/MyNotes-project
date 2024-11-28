@@ -4,7 +4,7 @@
             <h1 class="main-page-text-1">Мои заметки</h1>
             <h3 class="main-page-text-2">Не забывай о важном, храни его в облаке.</h3>
         </div>
-        <img class="main-page-img" src="@/assets/main-img.png">
+        <img class="main-page-img" src="/src/assets/main-img.png">
     </section>
 </template>
 

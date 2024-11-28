@@ -1,7 +1,7 @@
 <template>
     <header class="header">
-        <img v-if="window_width < 768 && !storeNotes.notes.length && storeAuth.isAuth" src="@/assets/logo.svg"/>
-        <img v-else src="@/assets/logo.svg" :class="{ 'header-logo': window_width < 768 && storeNotes.notes.length || window_width < 768&& !storeAuth.isAuth }"/>
+        <img v-if="window_width < 768 && !storeNotes.notes.length && storeAuth.isAuth" src="/src/assets/logo.svg"/>
+        <img v-else src="/src/assets/logo.svg" :class="{ 'header-logo': window_width < 768 && storeNotes.notes.length || window_width < 768&& !storeAuth.isAuth }"/>
         <note_btn 
             v-if="!is_loading && !storeAuth.$state.isAuth"
             :text="'Вход'"
@@ -10,7 +10,7 @@
         />
         <div v-if="!is_loading && storeAuth.$state.isAuth" class="header-profile">
             <span v-if="window_width > 767 || (window_width < 768 && !storeNotes.notes.length)" class="header-profile-email">{{ storeAuth.email }}</span>
-            <img class="header-profile-avatar" src="@/assets/icon-profile.svg" @click="toggleLogout">
+            <img class="header-profile-avatar" src="/src/assets/icon-profile.svg" @click="toggleLogout">
             <div class="header-profile-logout-box" v-if="is_logout_visible">
                 <span class="header-profile-logout-box-link" @click="logout">Выйти</span>
             </div>
@@ -19,12 +19,12 @@
 </template>
 
 <script setup>
-import note_btn from '@/vue-mynotes/components-note-create/note-btn.vue';
+import note_btn from '../components-note-create/note-btn.vue';
 import { defineProps, ref, onMounted, onBeforeUnmount } from 'vue';
-import { useStoreModal } from '@/vue-mynotes/stores/modal';
-import { useStoreAuth } from '@/vue-mynotes/stores/auth';
-import { useNotesStore } from '@/vue-mynotes/stores/notes';
-import { logoutUser } from '@/vue-mynotes/api';
+import { useStoreModal } from '../stores/modal';
+import { useStoreAuth } from '../stores/auth';
+import { useNotesStore } from '../stores/notes';
+import { logoutUser } from '../api';
 import { useRouter } from 'vue-router';
 
 defineProps({

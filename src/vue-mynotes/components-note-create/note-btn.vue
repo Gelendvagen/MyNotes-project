@@ -1,8 +1,8 @@
 <template>
     <button class="btn" :class="btn_type" :disabled="disabled">
-      <img v-if="btn_type === '_auth'" src="@/assets/icon-btnlogin.svg">
-      <img v-if="btn_type === '_cross' || btn_type === '_delete'" src="@/assets/cross.svg">
-      <img v-if="btn_type === '_plus'" src="@/assets/plus.svg">
+      <img v-if="btn_type === '_auth'" src="/src/assets/icon-btnlogin.svg">
+      <img v-if="btn_type === '_cross' || btn_type === '_delete'" src="/src/assets/cross.svg">
+      <img v-if="btn_type === '_plus'" src="/src/assets/plus.svg">
       <span v-if="btn_type === '_primary' || btn_type === '_delete' || btn_type === '_auth'" class="btn-text">{{ text }}</span>
   </button>
 </template>

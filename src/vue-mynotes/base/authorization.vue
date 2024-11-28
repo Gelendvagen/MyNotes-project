@@ -13,8 +13,8 @@
                 @blur="validCheck(input)"
             />
             <div class="modal-auth-form-eye"  @click="togglePassVisibility(input)">
-                <img v-if="input.type === 'password'" src="@/assets/show-password.svg">
-                <img v-if="input.type === 'text'" src="@/assets/hide-password.svg">
+                <img v-if="input.type === 'password'" src="/src/assets/show-password.svg">
+                <img v-if="input.type === 'text'" src="/src/assets/hide-password.svg">
             </div>
         </div>
         <div class="modal-auth-info">
@@ -32,11 +32,11 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import note_name from '@/vue-mynotes/components-note-create/note-name.vue';
-import note_btn from '@/vue-mynotes/components-note-create/note-btn.vue';
-import { useStoreModal } from '@/vue-mynotes/stores/modal.js';
-import { authUser, getUserInfo } from '@/vue-mynotes/api.js';
-import { useStoreAuth } from '@/vue-mynotes/stores/auth.js';
+import note_name from '../components-note-create/note-name.vue';
+import note_btn from '../components-note-create/note-btn.vue';
+import { useStoreModal } from '../stores/modal.js';
+import { authUser, getUserInfo } from '../api.js';
+import { useStoreAuth } from '../stores/auth.js';
 
 const storeModal = useStoreModal();
 const storeAuth = useStoreAuth();

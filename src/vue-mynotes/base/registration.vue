@@ -13,8 +13,8 @@
                 @blur="validCheck(input)"
             />
             <div class="modal-registration-form-eye"  @click="togglePassVisibility(input)">
-                <img v-if="input.type === 'password'" src="@/assets/show-password.svg">
-                <img v-if="input.type === 'text'" src="@/assets/hide-password.svg">
+                <img v-if="input.type === 'password'" src="/src/assets/show-password.svg">
+                <img v-if="input.type === 'text'" src="/src/assets/hide-password.svg">
             </div>
         </div>
         <div class="modal-registration-info">
@@ -31,10 +31,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import note_name from '@/vue-mynotes/components-note-create/note-name.vue';
-import note_btn from '@/vue-mynotes/components-note-create/note-btn.vue';
-import { useStoreModal } from '@/vue-mynotes/stores/modal';
-import { registerUser } from '@/vue-mynotes/api';
+import note_name from '../components-note-create/note-name.vue';
+import note_btn from '../components-note-create/note-btn.vue';
+import { useStoreModal } from '../stores/modal';
+import { registerUser } from '../api';
 
 const storeModal = useStoreModal();
 

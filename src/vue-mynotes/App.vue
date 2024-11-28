@@ -1,11 +1,11 @@
 <script setup>
-import Header from '@/vue-mynotes/base/header.vue';
-import modalCmp from '@/vue-mynotes/base/modal-entry.vue';
-import { useStoreModal } from '@/vue-mynotes/stores/modal';
-import { useStoreAuth } from '@/vue-mynotes/stores/auth';
+import Header from '../vue-mynotes/base/header.vue';
+import modalCmp from '../vue-mynotes/base/modal-entry.vue';
+import { useStoreModal } from '../vue-mynotes/stores/modal';
+import { useStoreAuth } from '../vue-mynotes/stores/auth';
 import { onMounted, ref } from 'vue';
-import { checkServerStatus } from '@/vue-mynotes/api';
-import { getUserInfo } from '@/vue-mynotes/api';
+import { checkServerStatus } from '../vue-mynotes/api';
+import { getUserInfo } from '../vue-mynotes/api';
 import { useCookies } from 'vue3-cookies';
 
 const { cookies } = useCookies();
